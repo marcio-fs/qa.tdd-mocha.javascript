@@ -1,0 +1,44 @@
+name: QA TDD Pipeline - Mocha Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '20'  # Explicit LTS version
+  CI: true            # Enable CI mode
+
+jobs:
+  test:
+    name: Run Mocha Tests (TDD)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15  # Prevent hanging jobs
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Updated to latest version
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'  # Enable caching for faster installs
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "Usando npm install (lock file não encontrado)"
+            npm install
+          fi  # Clean install for reproducibility
+        env:
+          NODE_ENV: development
+
+      - name: Run Mocha tests
+        run: npm test
+        env:
+          CI: ${{ env.CI }}
+          NODE_ENV: test
