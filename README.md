@@ -72,7 +72,7 @@ graph TD
     D -- Sim --> E[Refatorar]
     E --> A
     D -- Não --> C
-
+```
 ---
 
 **Nota:** Este projeto é apenas para fins de avaliação técnica.
