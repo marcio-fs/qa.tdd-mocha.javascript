@@ -1,0 +1,15 @@
+{
+  "name": "qa.tdd-mocha.javascript",
+  "version": "1.0.0",
+  "description": "A project demonstrating TDD with Mocha for a Pessoa class in JavaScript.",
+  "main": "src/Pessoa.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^9.2.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
