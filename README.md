@@ -66,12 +66,12 @@ npm test
 ### Diagrama do Fluxo TDD
 ```mermaid
 graph TD
-    A[Escrever Teste] --> B[Teste Falha?]
-    B -->|Sim| C[Implementar Código]
-    C --> D[Teste Passa?]
-    D -->|Sim| E[Refatorar]
+    A[Escrever Teste] --> B{Teste Falha?}
+    B -- Sim --> C[Implementar Código]
+    C --> D{Teste Passa?}
+    D -- Sim --> E[Refatorar]
     E --> A
-    D -->|Não| C
+    D -- Não --> C
 
 ---
 
